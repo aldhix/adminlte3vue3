@@ -1,5 +1,19 @@
+<script>
+import ContentWraper from "../components/ContentWraper.vue"
+export default {
+  components:{
+    ContentWraper
+  }
+}
+</script>
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <content-wraper :title="{ name:'About' }">
+      <div class="card">
+        <div class="card-body">
+            <p>
+              Hello World!
+            </p>
+        </div>
+      </div>
+  </content-wraper>
 </template>
