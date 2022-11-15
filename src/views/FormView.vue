@@ -5,7 +5,7 @@
   import FormSelect from "../components/FormSelect.vue";
   import FormTextarea from "../components/FormTextarea.vue";
   import ButtonSave from "../components/ButtonSave.vue";
-  import FormSelect2 from "../components/FormSelect2.vue";
+  import FormSelectInput from "../components/FormSelectInput.vue";
 
   export default {
     components: {
@@ -15,11 +15,20 @@
       FormSelect,
       FormTextarea,
       ButtonSave,
-      FormSelect2,
+      FormSelectInput,
     },
     data() {
       return {
-        gender: ["Male", "Female"],
+        gender: [
+          ['M','Male'],
+          ['F','Female']
+        ],
+        company : [
+          ['facebook','Facebook'],
+          ['google','Google'],
+          ['amazon','Amazon'],
+          ['tesla','Tesla'],
+        ],
         input: {
           select: null,
           select2:null,
@@ -29,6 +38,7 @@
             input: ["Input is required"],
             select: ["Select is required"],
             select2: ["Select2 is required"],
+            multiple: ["Select Multiple is required"],
             textarea: ["Textarea is required"],
           },
         },
@@ -38,7 +48,7 @@
       action() {
         let input = this.input;
         window.toastr.success(
-          `Input:${input.input},<br>Select:${input.select},<br>Select2:${input.select2},<br>Textarea:${input.textarea}`
+          `Input:${input.input},<br>Select:${input.select},<br>Select2:${input.select2},<br>Select Multiple:${input.multiple},<br>Textarea:${input.textarea}`
         );
       },
     },
@@ -55,11 +65,11 @@
           <div class="card-body">
             <form-group>
               <label for="">Input</label>
-              <form-input placeholder="Input..." v-model="input.input" :dataInvalid="{ name: 'input', data: error }" />
+              <form-input placeholder="Input..." v-model="input.input" :data-error="{ name: 'input', data: error }" />
             </form-group>
             <form-group>
               <label for="">Select</label>
-              <form-select v-model="input.select" :dataInvalid="{ name: 'select', data: error }">
+              <form-select v-model="input.select" :data-error="{ name: 'select', data: error }">
                 <option :value="null">Pilih</option>
                 <option v-for="(value, index) in gender" :value="value" :key="index">
                   {{ value }}
@@ -67,18 +77,27 @@
               </form-select>
             </form-group>
             <form-group>
-              <label for="">Select2</label>
-              <form-select2 v-model="input.select2" :dataInvalid="{ name: 'select2', data: error }" title="Pilih">
+              <label for="">Select Input</label>
+              <form-select-input id="bselect-multi" v-model="input.select2" :data-error="{ name: 'select2', data: error }" title="Pilih">
                 <option :value="null">Pilih</option>
-                <option v-for="(value, index) in gender" :value="value" :key="index">
-                  {{ value }}
+                <option v-for="(value, index) in gender" :value="value[0]" :key="index">
+                  {{ value[1] }}
                 </option>
-              </form-select2>
+              </form-select-input>
+            </form-group>
+            <form-group>
+              <label for="">Select Input Multiple</label>
+              <form-select-input v-model="input.multiple" :data-error="{ name: 'multiple', data: error }" title="Pilih" multiple>
+                <option :value="null">Pilih</option>
+                <option v-for="(value, index) in company" :value="value[0]" :key="index">
+                  {{ value[1] }}
+                </option>
+              </form-select-input>
             </form-group>
             <form-group>
               <label for="">Textarea</label>
               <form-textarea placeholder="Textarea.." v-model="input.textarea"
-                :dataInvalid="{ name: 'textarea', data: error }" />
+                :data-error="{ name: 'textarea', data: error }" />
             </form-group>
           </div>
           <div class="card-footer">

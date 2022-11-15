@@ -11,7 +11,7 @@ export default {
     v-model="value"
     :class="{ 'is-invalid': isInvalid() }"
   ></textarea>
-  <div class="invalid-feedback" v-if="isInvalid() && !dataInvalid.hide">
-    {{ dataInvalid.data.errors[dataInvalid.name][0] }}
+  <div class="invalid-feedback" v-if="isInvalid() && !dataError.hide">
+    {{ dataError.data.errors[dataError.name][0] }}
   </div>
 </template>

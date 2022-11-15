@@ -5,7 +5,7 @@ export default {
         modelValue: {
             type: [String, Number],
         },
-        dataInvalid: {
+        dataError: {
             type: Object,
             default: () => ({}),
         },
@@ -23,17 +23,17 @@ export default {
     },
     methods: {
         isInvalid() {
-            let data = this.dataInvalid.data
+            let data = this.dataError.data
             try {
-                return this.dataInvalid.name in data.errors
+                return this.dataError.name in data.errors
             } catch (error) {
                 return false
             }
         },
         removeError() {
-            let data = this.dataInvalid.data
+            let data = this.dataError.data
             try {
-                delete data.errors[this.dataInvalid.name]
+                delete data.errors[this.dataError.name]
             } catch (error) {
                 //
             }

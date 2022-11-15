@@ -6,7 +6,7 @@
             modelValue: {
                 type: [String, Number],
             },
-            dataInvalid: {
+            dataError: {
                 type: Object,
                 default: () => ({}),
             },
@@ -40,9 +40,9 @@
         },
         methods: {
             isInvalid() {
-                let data = this.dataInvalid.data;
+                let data = this.dataError.data;
                 try {
-                    let has = this.dataInvalid.name in data.errors;
+                    let has = this.dataError.name in data.errors;
                     if (has){
                         $(`#${this.id}`).parent().addClass('is-invalid')
                         return true
@@ -54,10 +54,10 @@
                 }
             },
             removeError() {
-                let data = this.dataInvalid.data;
+                let data = this.dataError.data;
                 $(`#${this.id}`).parent().removeClass('is-invalid');
                 try {
-                    delete data.errors[this.dataInvalid.name];
+                    delete data.errors[this.dataError.name];
                 } catch (error) {
                     //
                 }
@@ -70,7 +70,7 @@
         :class="{ 'is-invalid': isInvalid() }">
         <slot></slot>
     </select>
-    <div class="invalid-feedback" v-if="isInvalid() && !dataInvalid.hide">
-        {{ dataInvalid.data.errors[dataInvalid.name][0] }}
+    <div class="invalid-feedback" v-if="isInvalid() && !dataError.hide">
+        {{ dataError.data.errors[dataError.name][0] }}
     </div>
 </template>

@@ -13,7 +13,7 @@ export default {
   >
     <slot></slot>
   </select>
-  <div class="invalid-feedback" v-if="isInvalid() && !dataInvalid.hide">
-    {{ dataInvalid.data.errors[dataInvalid.name][0] }}
+  <div class="invalid-feedback" v-if="isInvalid() && !dataError.hide">
+    {{ dataError.data.errors[dataError.name][0] }}
   </div>
 </template>
