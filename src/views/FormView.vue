@@ -6,7 +6,7 @@
   import FormTextarea from "../components/FormTextarea.vue";
   import ButtonSave from "../components/ButtonSave.vue";
   import FormSelectInput from "../components/FormSelectInput.vue";
-
+  import FormSelectInputMultiple from "../components/FormSelectMultiple.vue"
   export default {
     components: {
       ContentWraper,
@@ -16,6 +16,7 @@
       FormTextarea,
       ButtonSave,
       FormSelectInput,
+      FormSelectInputMultiple
     },
     data() {
       return {
@@ -87,12 +88,12 @@
             </form-group>
             <form-group>
               <label for="">Select Input Multiple</label>
-              <form-select-input v-model="input.multiple" :data-error="{ name: 'multiple', data: error }" title="Pilih" multiple>
+              <form-select-input-multiple v-model="input.multiple" :data-error="{ name: 'multiple', data: error }" title="Pilih">
                 <option :value="null">Pilih</option>
                 <option v-for="(value, index) in company" :value="value[0]" :key="index">
                   {{ value[1] }}
                 </option>
-              </form-select-input>
+              </form-select-input-multiple>
             </form-group>
             <form-group>
               <label for="">Textarea</label>
