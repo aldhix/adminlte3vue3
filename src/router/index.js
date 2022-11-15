@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import UserView from '../views/UserView.vue'
 import FormView from '../views/FormView'
+import TableList from '../views/TableList'
 const routes = [
   {
     path: '/',
@@ -17,6 +18,11 @@ const routes = [
     path: '/form',
     name: 'form',
     component: FormView
+  },
+  {
+    path: '/table',
+    name: 'table',
+    component: TableList
   },
   {
     path: '/about',

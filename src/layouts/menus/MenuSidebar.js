@@ -21,6 +21,13 @@ export default [{
     },
 },
 {
+    name: "Table List",
+    icon: "fas fa-list",
+    to: {
+        name: "table",
+    },
+},
+{
     name: "Sub Menu",
     icon: "fas fa-cogs",
     submenu: [{
